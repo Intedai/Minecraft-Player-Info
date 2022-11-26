@@ -14,7 +14,7 @@ from pyperclip import copy #uses the copy function to add the UUID to the clipbo
 
 #The entire software: the GUI and displaying everything from the PlayerProperties
 class Software():
-    def __init__(self):
+    def __init__(self) -> None:
         self.root = tk.Tk()
 
         self.root.geometry("1000x525")
@@ -83,7 +83,7 @@ class Software():
         tk.mainloop()
 
 
-    def getPlayerProperties(self):
+    def getPlayerProperties(self) -> None:
         try:
             #new PlayerProperties Object to get all of the player's info, getting the input from the entry widget
             newSkin = PlayerProperties(self.user_entry.get())
@@ -127,11 +127,11 @@ class Software():
             self.root.bind("<Return>")
     
     #adds the UUID to the clipboard
-    def copy_UUID(self):
+    def copy_UUID(self) -> None:
         copy(self.uuid_val)
     
 
-    def save_skin(self):
+    def save_skin(self) -> None:
         try:
             file=filedialog.asksaveasfilename(filetypes=[('PNG', '*.png')], defaultextension=".png")
             Image.open(urlopen(self.url)).save(file)
@@ -144,7 +144,7 @@ class Software():
 
 #handling the Mojang API requests
 class PlayerProperties():
-    def __init__(self,username):
+    def __init__(self,username)  -> None:
         #GET request to the Mojang API to get the player's uuid
         get_request = requests.get("https://api.mojang.com/users/profiles/minecraft/"+username)
          
